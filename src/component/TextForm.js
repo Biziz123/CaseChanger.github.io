@@ -31,7 +31,7 @@ const handleCopy = () => {
   var text = document.getElementById("myBox");
   text.select();
   navigator.clipboard.writeText(text.value);
-  props.showAlert("Copied","success");
+  props.showAlert("Copied to Clipboard","success");
 }
 
   const [text,setText]=useState('');
@@ -50,8 +50,8 @@ const handleCopy = () => {
     </div>
     <div className="container my-3">
       <h2 style={{color: props.mode==='light'?'black':'white'}}>Text Summary</h2>
-      <p style={{color: props.mode==='light'?'black':'white'}}>{text.split(" ").length -1} words and {text.length} characters</p>
-      <p style={{color: props.mode==='light'?'black':'white'}}>{0.48*(text.split(" ").length-1)} - Seconds Read</p>
+      <p style={{color: props.mode==='light'?'black':'white'}}>{text.split(" ").filter((element)=>{return element.length!=0}).length} words and {text.length} characters</p>
+      <p style={{color: props.mode==='light'?'black':'white'}}>{0.48*(text.split(" ").filter((element)=>{return element.length!=0}).length)} - Seconds Read</p>
        <h2 style={{color: props.mode==='light'?'black':'white'}}>Preview</h2>
        <p style={{color: props.mode==='light'?'black':'white'}}>{text}</p>
     </div>
